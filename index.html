@@ -1,0 +1,911 @@
+﻿<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AK Token Ecosystem public transparency website for Polygon, NFT, rewards, and community utilities.">
+  <title>AK Token Ecosystem</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #050914;
+      --panel: #0b1324;
+      --panel2: #101a31;
+      --ink: #f4f8ff;
+      --muted: #9aa8bd;
+      --line: rgba(148, 163, 184, .18);
+      --blue: #2563eb;
+      --cyan: #38bdf8;
+      --green: #39ff88;
+      --shadow: 0 22px 55px rgba(0, 0, 0, .34);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, .28), transparent 28%),
+        radial-gradient(circle at 82% 8%, rgba(57, 255, 136, .13), transparent 26%),
+        linear-gradient(180deg, #060b18 0%, var(--bg) 48%, #030611 100%);
+      line-height: 1.48;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1180px, calc(100% - 28px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(5, 9, 20, .86);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, var(--blue), #07172f);
+      border: 1px solid rgba(56, 189, 248, .45);
+      box-shadow: 0 0 24px rgba(57, 255, 136, .14);
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .links a,
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border-radius: 7px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      background: rgba(16, 26, 49, .72);
+      color: #eaf2ff;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--blue), #12306b);
+      border-color: rgba(56, 189, 248, .55);
+    }
+
+    header { padding: 34px 0 20px; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .panel,
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(16, 26, 49, .96), rgba(8, 14, 27, .96));
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+
+    .eyebrow {
+      margin-bottom: 10px;
+      color: #9bdcff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 12px;
+      font-size: clamp(34px, 6vw, 70px);
+      line-height: 1.05;
+      letter-spacing: 0;
+      overflow-wrap: normal;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(24px, 4vw, 36px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h3 { margin-bottom: 8px; font-size: 17px; }
+
+    .subtitle {
+      max-width: 780px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-actions,
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      border: 1px solid rgba(57, 255, 136, .28);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(57, 255, 136, .08);
+      color: #b8ffd2;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .top-stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .stat-mini {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(2, 6, 23, .35);
+      padding: 12px;
+      min-width: 0;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+
+    .mini-value {
+      font-size: 17px;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    .value {
+      font-size: clamp(24px, 3.4vw, 36px);
+      font-weight: 900;
+      line-height: 1.08;
+      overflow-wrap: anywhere;
+    }
+
+    .neon { color: var(--green); text-shadow: 0 0 18px rgba(57, 255, 136, .18); }
+    .small { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+
+    .contract,
+    .addr {
+      font-family: Consolas, monospace;
+      overflow-wrap: anywhere;
+      color: #d6e4ff;
+    }
+
+    .contract {
+      display: inline-flex;
+      max-width: 100%;
+      padding: 8px 10px;
+      border-radius: 7px;
+      border: 1px solid rgba(56, 189, 248, .28);
+      background: rgba(2, 6, 23, .55);
+      font-size: 12px;
+    }
+
+    main { padding-bottom: 34px; }
+
+    section {
+      padding: 18px 0;
+      scroll-margin-top: 84px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    .progress {
+      height: 12px;
+      overflow: hidden;
+      margin: 13px 0 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, .16);
+    }
+
+    .progress span {
+      display: block;
+      width: 8%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+      box-shadow: 0 0 16px rgba(57, 255, 136, .32);
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #dbeafe;
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(57, 255, 136, .12);
+      color: var(--green);
+      border: 1px solid rgba(57, 255, 136, .26);
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    td, th {
+      border-bottom: 1px solid var(--line);
+      padding: 12px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .nft-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .nft-card,
+    .phase {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background:
+        linear-gradient(145deg, rgba(37, 99, 235, .18), rgba(57, 255, 136, .07)),
+        rgba(2, 6, 23, .36);
+    }
+
+    .nft-art {
+      width: 100%;
+      min-height: 180px;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, .22);
+      background:
+        radial-gradient(circle at 25% 20%, rgba(57, 255, 136, .22), transparent 28%),
+        radial-gradient(circle at 75% 70%, rgba(56, 189, 248, .22), transparent 30%),
+        linear-gradient(145deg, #08172d, #050914);
+    }
+
+    .nft-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nft-art.is-loading::after {
+      content: "";
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid rgba(56, 189, 248, .24);
+      border-top-color: var(--green);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .nft-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 10px 0 14px;
+    }
+
+    .phase.done { border-color: rgba(57, 255, 136, .35); background: rgba(57, 255, 136, .07); }
+
+    .grant-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grant-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background:
+        linear-gradient(145deg, rgba(37, 99, 235, .20), rgba(56, 189, 248, .07)),
+        rgba(2, 6, 23, .36);
+    }
+
+    .disclaimer {
+      border-left: 4px solid var(--cyan);
+      background: rgba(56, 189, 248, .07);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 22px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .nav-inner,
+      .hero { display: grid; grid-template-columns: 1fr; }
+      .links { justify-content: flex-start; }
+      .top-stats { grid-template-columns: repeat(2, 1fr); }
+      .nft-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .span-3, .span-4, .span-6, .span-8, .span-12 { grid-column: span 12; }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 20px, 1180px); }
+      header { padding-top: 24px; }
+      .panel, .card { padding: 16px; }
+      .links a, .btn { width: 100%; }
+      .hero-actions .btn { width: auto; flex: 1 1 160px; }
+      .top-stats,
+      .nft-grid,
+      .grant-grid,
+      .roadmap { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(32px, 12vw, 48px); line-height: 1.08; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home"><span class="logo">AK</span><span>AK Token</span></a>
+      <div class="links">
+        <a href="#home">Home</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#nft">NFT Ecosystem</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#whitepaper">Whitepaper</a>
+        <a href="#grant">Grant</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="wrap" id="home">
+    <div class="hero">
+      <div class="panel">
+        <div class="eyebrow">AK TOKEN ECOSYSTEM</div>
+        <h1>AK TOKEN ECOSYSTEM</h1>
+        <p class="subtitle">Transparency Dashboard for Community, NFT, Rewards, and Future Utilities on Polygon Network.</p>
+        <a class="contract" id="contractAddress" target="_blank" rel="noreferrer"></a>
+        <div class="hero-actions">
+          <a class="btn primary" id="viewContractHero" target="_blank" rel="noreferrer">View Contract</a>
+          <a class="btn" id="viewHoldersHero" target="_blank" rel="noreferrer">View Holders</a>
+          <a class="btn" id="viewTransfersHero" target="_blank" rel="noreferrer">View Transfers</a>
+          <a class="btn" href="#nft">View NFT Ecosystem</a>
+        </div>
+        <div class="top-stats">
+          <div class="stat-mini"><div class="label">Holders</div><div class="mini-value" id="topHolders">8</div></div>
+          <div class="stat-mini"><div class="label">Transfers</div><div class="mini-value" id="topTransfers">23</div></div>
+          <div class="stat-mini"><div class="label">NFT Collections</div><div class="mini-value">6</div></div>
+          <div class="stat-mini"><div class="label">Network</div><div class="mini-value">Polygon</div></div>
+          <div class="stat-mini"><div class="label">Supply</div><div class="mini-value" id="topSupply">1,000,001,000 AK</div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="label">Community Goal</div>
+        <div class="value"><span id="goalHolders">8</span> / 100</div>
+        <div class="progress"><span id="goalBar"></span></div>
+        <p class="small"><span id="remainingHolders">92</span> holders remaining to reach the first community milestone.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="dashboard">
+      <div class="grid">
+        <article class="card span-3"><div class="label">Total Supply</div><div class="value" id="totalSupply">1,000,001,000 AK</div><p class="small">AK Token supply on Polygon.</p></article>
+        <article class="card span-3"><div class="label">Holders</div><div class="value neon" id="holders">8</div><p class="small">Current AK Token holders.</p></article>
+        <article class="card span-3"><div class="label">Transfers</div><div class="value" id="transfers">23</div><p class="small">Public token transfer count.</p></article>
+        <article class="card span-3"><div class="label">Network</div><div class="value">Polygon</div><p class="small" id="dataStatus">Public fallback data loaded.</p></article>
+        <article class="card span-6">
+          <h2>Community Goal Section</h2>
+          <table>
+            <tbody>
+              <tr><td>Current Holders</td><td id="currentHolderCell">8</td></tr>
+              <tr><td>Target</td><td>100 Holders</td></tr>
+              <tr><td>Progress</td><td id="progressPercent">8%</td></tr>
+            </tbody>
+          </table>
+          <div class="progress"><span id="progressBar"></span></div>
+          <p class="small"><span id="remainingHoldersDetail">92</span> holders remaining to reach the first community milestone.</p>
+        </article>
+        <article class="card span-6">
+          <h2>Treasury + Reserve Wallet</h2>
+          <p class="label">Address:</p>
+          <a class="addr" id="treasuryReserveWallet" target="_blank" rel="noreferrer"></a>
+          <p class="label" style="margin-top:14px;">Allocation:</p>
+          <p class="small">700,000,000 AK Treasury</p>
+          <p class="small">300,000,000 AK Reserve</p>
+          <p class="small">Total: 1,000,000,000 AK</p>
+          <p><a class="btn primary" id="viewWallet" target="_blank" rel="noreferrer">View Wallet on PolygonScan</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="nft">
+      <div class="card">
+        <h2>NFT Ecosystem Section</h2>
+        <div class="top-stats" style="margin:0 0 16px;">
+          <div class="stat-mini"><div class="label">Total NFT Collections</div><div class="mini-value">6</div></div>
+          <div class="stat-mini"><div class="label">Blockchain</div><div class="mini-value">Polygon</div></div>
+          <div class="stat-mini"><div class="label">AK Token Holders</div><div class="mini-value" id="nftHolders">8</div></div>
+          <div class="stat-mini"><div class="label">AK Token Supply</div><div class="mini-value" id="nftSupply">1,000,001,000 AK</div></div>
+        </div>
+        <div class="nft-grid">
+          <article class="nft-card" data-slug="jawa-cosmic-legends">
+            <div class="nft-art is-loading"><img alt="Jawa Cosmic Legends thumbnail" hidden></div>
+            <h3>Jawa Cosmic Legends</h3>
+            <p class="subtitle">Cultural and cosmic themed NFT collection inspired by Javanese legends.</p>
+            <div class="nft-meta"><span class="badge">Polygon</span><span class="badge">Culture</span></div>
+            <p><a class="btn primary" id="jawaCollection" target="_blank" rel="noreferrer">View on OpenSea</a></p>
+          </article>
+          <article class="nft-card" data-slug="zurp-001">
+            <div class="nft-art is-loading"><img alt="Zurp #001 thumbnail" hidden></div>
+            <h3>Zurp #001</h3>
+            <p class="subtitle">Early Zurp collection connected to the ZOQstudio NFT universe and AK Token ecosystem.</p>
+            <div class="nft-meta"><span class="badge">Polygon</span><span class="badge">Zurp</span></div>
+            <p><a class="btn primary" id="zurp001Collection" target="_blank" rel="noreferrer">View on OpenSea</a></p>
+          </article>
+          <article class="nft-card" data-slug="zurp-002">
+            <div class="nft-art is-loading"><img alt="Zurp #002 thumbnail" hidden></div>
+            <h3>Zurp #002</h3>
+            <p class="subtitle">Second Zurp collection expanding the visual identity and collectible universe.</p>
+            <div class="nft-meta"><span class="badge">Polygon</span><span class="badge">Zurp</span></div>
+            <p><a class="btn primary" id="zurp002Collection" target="_blank" rel="noreferrer">View on OpenSea</a></p>
+          </article>
+          <article class="nft-card" data-slug="zurp-003-the-foes-of-prince-zoq">
+            <div class="nft-art is-loading"><img alt="Zurp #003 The Foes of Prince Zoq thumbnail" hidden></div>
+            <h3>Zurp #003 The Foes of Prince Zoq</h3>
+            <p class="subtitle">Character-driven NFT collection featuring the foes and story layer of Prince Zoq.</p>
+            <div class="nft-meta"><span class="badge">Polygon</span><span class="badge">Story</span></div>
+            <p><a class="btn primary" id="zurp003Collection" target="_blank" rel="noreferrer">View on OpenSea</a></p>
+          </article>
+          <article class="nft-card" data-slug="javanese-legends-collection">
+            <div class="nft-art is-loading"><img alt="Javanese Legends Collection thumbnail" hidden></div>
+            <h3>Javanese Legends Collection</h3>
+            <p class="subtitle">NFT collection inspired by Javanese myth, folklore, and digital cultural storytelling.</p>
+            <div class="nft-meta"><span class="badge">Polygon</span><span class="badge">Legends</span></div>
+            <p><a class="btn primary" id="javaneseCollection" target="_blank" rel="noreferrer">View on OpenSea</a></p>
+          </article>
+          <article class="nft-card" data-slug="putri-bali">
+            <div class="nft-art is-loading"><img alt="Putri Bali thumbnail" hidden></div>
+            <h3>Putri Bali</h3>
+            <p class="subtitle">NFT collection inspired by Balinese beauty, culture, and digital art.</p>
+            <div class="nft-meta"><span class="badge">Polygon</span><span class="badge">Bali</span></div>
+            <p><a class="btn primary" id="putriCollection" target="_blank" rel="noreferrer">View on OpenSea</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tokenomics">
+      <div class="grid">
+        <article class="card span-6">
+          <h2>Tokenomics</h2>
+          <table>
+            <tbody>
+              <tr><td>Total Supply</td><td id="tokenomicsSupply">1,000,001,000 AK</td></tr>
+              <tr><td>Treasury Allocation</td><td>700,000,000 AK</td></tr>
+              <tr><td>Reserve Allocation</td><td>300,000,000 AK</td></tr>
+              <tr><td>Community Growth Plan</td><td>100 initial holders, NFT ecosystem expansion, and community rewards.</td></tr>
+            </tbody>
+          </table>
+          <p><a class="btn primary" href="whitepaper.pdf" download>Download Whitepaper PDF</a></p>
+        </article>
+        <article class="card span-6">
+          <h2>AK Token Utility</h2>
+          <ul class="list">
+            <li><span class="check">✓</span>Community reward program</li>
+            <li><span class="check">✓</span>Bonus for digital product buyers</li>
+            <li><span class="check">✓</span>NFT ecosystem access</li>
+            <li><span class="check">✓</span>Future membership utility</li>
+            <li><span class="check">✓</span>Community treasury tracking</li>
+          </ul>
+          <p class="small">AK Token is a community utility token. It is not financial advice and does not promise profit or price increase.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="card">
+        <h2>Roadmap Section</h2>
+        <div class="roadmap">
+          <article class="phase done"><h3>Phase 1</h3><p class="small">Contract Deploy - Completed</p></article>
+          <article class="phase done"><h3>Phase 2</h3><p class="small">Dashboard Publish - Completed</p></article>
+          <article class="phase"><h3>Phase 3</h3><p class="small">10 Holders - In Progress</p></article>
+          <article class="phase"><h3>Phase 4</h3><p class="small">25 Holders - Planned</p></article>
+          <article class="phase"><h3>Phase 5</h3><p class="small">50 Holders - Planned</p></article>
+          <article class="phase"><h3>Phase 6</h3><p class="small">100 Holders - Planned</p></article>
+          <article class="phase"><h3>Phase 7</h3><p class="small">NFT + Reward Integration - Planned</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="whitepaper">
+      <div class="card">
+        <h2>Whitepaper</h2>
+        <p class="subtitle">AK Token Whitepaper v2.1 documents the ecosystem foundation, founder section, tokenomics, NFT collections, digital product bonus program, grant proposal summary, and future expansion direction.</p>
+        <p><a class="btn primary" id="whitepaperDownload" href="whitepaper.pdf" download>Download Whitepaper</a></p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="grid">
+        <article class="card span-8">
+          <h2>About AK Token</h2>
+          <p class="subtitle">AK Token adalah token komunitas di jaringan Polygon yang terhubung dengan NFT Jawa Cosmic Legends, NFT Putri Bali, reward komunitas, produk digital Alan Digital Shop, dan program holder.</p>
+          <p class="subtitle">Tujuan: membangun ekosistem NFT, komunitas, reward, dan utilitas digital di Polygon.</p>
+        </article>
+        <article class="card span-4">
+          <h2>Founder</h2>
+          <table>
+            <tbody>
+              <tr><td>Founder</td><td>Alan Kribo</td></tr>
+              <tr><td>Location</td><td>Bali, Indonesia</td></tr>
+              <tr><td>Focus</td><td>NFT Ecosystem<br>Community Utility<br>Digital Products<br>Web3 Education</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section id="official-links">
+      <div class="card">
+        <h2>Official Links</h2>
+        <div class="grant-grid">
+          <article class="grant-card"><h3>Official Website</h3><p><a class="btn primary" href="#home">Open Website</a></p></article>
+          <article class="grant-card"><h3>Whitepaper PDF</h3><p><a class="btn primary" href="whitepaper.pdf" download>Download Whitepaper</a></p></article>
+          <article class="grant-card"><h3>PolygonScan Contract</h3><p><a class="btn primary" id="officialContract" target="_blank" rel="noreferrer">View Contract</a></p></article>
+          <article class="grant-card"><h3>PolygonScan Treasury Wallet</h3><p><a class="btn primary" id="officialTreasury" target="_blank" rel="noreferrer">View Wallet</a></p></article>
+          <article class="grant-card"><h3>OpenSea Profile ZOQstudio</h3><p><a class="btn primary" id="officialOpenSea" target="_blank" rel="noreferrer">View Profile</a></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="grant">
+      <div class="card">
+        <div class="eyebrow">GRANT PREPARATION</div>
+        <h2>Grant Preparation</h2>
+        <p class="subtitle">This page explains why AK Token deserves attention from Web3 communities, NFT ecosystem builders, and future grant programs.</p>
+
+        <div class="grant-grid">
+          <article class="grant-card">
+            <h3>Why AK Token</h3>
+            <p class="small">AK Token combines:</p>
+            <ul class="list">
+              <li><span class="check">✓</span>Community Utility</li>
+              <li><span class="check">✓</span>NFT Ecosystem</li>
+              <li><span class="check">✓</span>Public Transparency</li>
+              <li><span class="check">✓</span>Digital Product Utility</li>
+              <li><span class="check">✓</span>Cultural Storytelling</li>
+            </ul>
+            <p class="small">Supported by public dashboard, public contract, public wallet tracking, and NFT collections.</p>
+          </article>
+
+          <article class="grant-card">
+            <h3>Project Assets</h3>
+            <ul class="list">
+              <li><span class="check">✓</span>AK Token</li>
+              <li><span class="check">✓</span>6 NFT Collections</li>
+              <li><span class="check">✓</span>Public Whitepaper</li>
+              <li><span class="check">✓</span>Public Dashboard</li>
+              <li><span class="check">✓</span>Polygon Network</li>
+            </ul>
+            <p class="small">Collections: Jawa Cosmic Legends, Zurp #001, Zurp #002, Zurp #003 The Foes of Prince Zoq, Javanese Legends Collection, and Putri Bali.</p>
+          </article>
+
+          <article class="grant-card">
+            <h3>Community Status</h3>
+            <table>
+              <tbody>
+                <tr><td>Current Holders</td><td id="grantHolders">8</td></tr>
+                <tr><td>Target</td><td>100 Initial Holders</td></tr>
+                <tr><td>Current NFT Collections</td><td>6</td></tr>
+              </tbody>
+            </table>
+            <div class="progress"><span id="grantProgressBar"></span></div>
+          </article>
+
+          <article class="grant-card">
+            <h3>Funding Direction</h3>
+            <p class="small">Potential use of ecosystem funding:</p>
+            <ul class="list">
+              <li><span class="check">✓</span>Dashboard improvement</li>
+              <li><span class="check">✓</span>Website improvement</li>
+              <li><span class="check">✓</span>NFT visibility</li>
+              <li><span class="check">✓</span>Community onboarding</li>
+              <li><span class="check">✓</span>Educational content</li>
+              <li><span class="check">✓</span>Documentation</li>
+              <li><span class="check">✓</span>Reward experiments</li>
+            </ul>
+            <p class="small">Important: Funding does not guarantee token appreciation.</p>
+          </article>
+
+          <article class="grant-card">
+            <h3>Future Expansion</h3>
+            <ul class="list">
+              <li><span class="check">✓</span>Community Growth</li>
+              <li><span class="check">✓</span>NFT Utility</li>
+              <li><span class="check">✓</span>Digital Product Bonus</li>
+              <li><span class="check">✓</span>Web3 Education</li>
+              <li><span class="check">✓</span>Cross-Ecosystem Presentation</li>
+              <li><span class="check">✓</span>Grant Exploration</li>
+            </ul>
+          </article>
+
+          <article class="grant-card">
+            <h3>Transparency</h3>
+            <ul class="list">
+              <li><span class="check">✓</span><a id="grantContract" target="_blank" rel="noreferrer">Contract Address</a></li>
+              <li><span class="check">✓</span><a id="grantTreasury" target="_blank" rel="noreferrer">Treasury Wallet</a></li>
+              <li><span class="check">✓</span><a href="whitepaper.pdf" download>Whitepaper</a></li>
+              <li><span class="check">✓</span><a href="#dashboard">Dashboard</a></li>
+              <li><span class="check">✓</span><a href="#nft">NFT Collections</a></li>
+            </ul>
+          </article>
+
+          <article class="grant-card">
+            <h3>Contact</h3>
+            <table>
+              <tbody>
+                <tr><td>Founder</td><td>Alan Kribo</td></tr>
+                <tr><td>Project</td><td>AK Token Ecosystem</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <article class="card disclaimer">
+        <h2>Disclaimer</h2>
+        <p class="subtitle">AK Token is a community utility project on Polygon Network. This website is for transparency and information only. It is not investment advice and does not guarantee profit.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-row">
+        <span>© 2026 AK Token Ecosystem</span>
+        <span>Community Utility Project</span>
+        <span>Powered by Polygon Network</span>
+        <span>Not investment advice.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const CONTRACT = "0xf81e151ef268301e4e69be34ed12cb88308c06e9";
+    const TREASURY = "0x4d38F67BC23C7D21D380F47e6c3fd7B738823Eb1";
+    const POLYGONSCAN = "https://polygonscan.com";
+    const POLYGONSCAN_API = "https://api.polygonscan.com/api";
+    const FALLBACK = { supply: 1000001000, holders: 8, transfers: 23 };
+
+    function fmt(value) {
+      return Number(value || 0).toLocaleString("en-US");
+    }
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+    function setHref(id, url, text) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.href = url;
+      if (text) el.textContent = text;
+    }
+
+    async function loadOpenSeaThumbnails() {
+      const cards = document.querySelectorAll(".nft-card[data-slug]");
+      await Promise.all([...cards].map(async (card) => {
+        const slug = card.dataset.slug;
+        const art = card.querySelector(".nft-art");
+        const img = card.querySelector("img");
+        if (!slug || !img || !art) return;
+        try {
+          const response = await fetch(`https://api.opensea.io/api/v2/collections/${slug}`, { cache: "force-cache" });
+          if (!response.ok) throw new Error("OpenSea metadata unavailable");
+          const data = await response.json();
+          const image = data.image_url || data.banner_image_url || data.featured_image_url;
+          if (!image) throw new Error("OpenSea image unavailable");
+          img.src = image;
+          img.hidden = false;
+          art.classList.remove("is-loading");
+        } catch (error) {
+          art.classList.remove("is-loading");
+        }
+      }));
+    }
+
+    function applyData(data, source) {
+      const supply = Number(data.supply || FALLBACK.supply);
+      const holders = Number(data.holders || FALLBACK.holders);
+      const transfers = Number(data.transfers || FALLBACK.transfers);
+      const remaining = Math.max(0, 100 - holders);
+      const progress = Math.min(100, holders);
+      const supplyText = `${fmt(supply)} AK`;
+
+      setText("topHolders", fmt(holders));
+      setText("topTransfers", fmt(transfers));
+      setText("topSupply", supplyText);
+      setText("nftHolders", fmt(holders));
+      setText("nftSupply", supplyText);
+      setText("totalSupply", supplyText);
+      setText("holders", fmt(holders));
+      setText("transfers", fmt(transfers));
+      setText("goalHolders", fmt(holders));
+      setText("remainingHolders", fmt(remaining));
+      setText("remainingHoldersDetail", fmt(remaining));
+      setText("currentHolderCell", fmt(holders));
+      setText("progressPercent", `${progress}%`);
+      setText("grantHolders", fmt(holders));
+      setText("tokenomicsSupply", supplyText);
+      setText("dataStatus", source === "live" ? "Live public data loaded." : "Public fallback data loaded.");
+
+      document.getElementById("goalBar").style.width = `${progress}%`;
+      document.getElementById("progressBar").style.width = `${progress}%`;
+      document.getElementById("grantProgressBar").style.width = `${progress}%`;
+    }
+
+    function normalizeTokenSupply(value) {
+      const raw = String(value || "").trim();
+      if (!raw) return null;
+      if (raw.length > 18 && /^\d+$/.test(raw)) {
+        const whole = raw.slice(0, -18) || "0";
+        const fraction = raw.slice(-18).replace(/0+$/, "");
+        return Number(fraction ? `${whole}.${fraction}` : whole);
+      }
+      const number = Number(raw.replace(/,/g, ""));
+      return Number.isFinite(number) ? number : null;
+    }
+
+    async function fetchJson(url) {
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    }
+
+    async function loadFromPolygonScanApi() {
+      const supplyUrl = `${POLYGONSCAN_API}?module=stats&action=tokensupply&contractaddress=${CONTRACT}`;
+      const holdersUrl = `${POLYGONSCAN_API}?module=token&action=tokenholdercount&contractaddress=${CONTRACT}`;
+      const transfersUrl = `${POLYGONSCAN_API}?module=account&action=tokentx&contractaddress=${CONTRACT}&page=1&offset=10000&sort=asc`;
+      const [supplyData, holdersData, transfersData] = await Promise.all([
+        fetchJson(supplyUrl),
+        fetchJson(holdersUrl).catch(() => null),
+        fetchJson(transfersUrl).catch(() => null)
+      ]);
+      const supply = normalizeTokenSupply(supplyData?.result);
+      const holders = Number(holdersData?.result);
+      const transferList = Array.isArray(transfersData?.result) ? transfersData.result : null;
+      const transfers = transferList ? transferList.length : null;
+      if (!supply && !holders && !transfers) throw new Error("PolygonScan API unavailable");
+      applyData({
+        supply: supply || FALLBACK.supply,
+        holders: Number.isFinite(holders) && holders > 0 ? holders : FALLBACK.holders,
+        transfers: transfers || FALLBACK.transfers
+      }, "live");
+    }
+
+    function setupLinks() {
+      const contractUrl = `${POLYGONSCAN}/token/${CONTRACT}`;
+      const holdersUrl = `${POLYGONSCAN}/token/tokenholderchart/${CONTRACT}`;
+      const transfersUrl = `${POLYGONSCAN}/token/${CONTRACT}#tokentxns`;
+      const treasuryUrl = `${POLYGONSCAN}/address/${TREASURY}`;
+      setHref("contractAddress", contractUrl, CONTRACT);
+      setHref("viewContractHero", contractUrl);
+      setHref("viewHoldersHero", holdersUrl);
+      setHref("viewTransfersHero", transfersUrl);
+      setHref("treasuryReserveWallet", treasuryUrl, TREASURY);
+      setHref("viewWallet", treasuryUrl);
+      setHref("contractLink", contractUrl, CONTRACT);
+      setHref("treasuryLink", treasuryUrl, TREASURY);
+      setHref("grantContract", contractUrl);
+      setHref("grantTreasury", treasuryUrl);
+      setHref("officialContract", contractUrl);
+      setHref("officialTreasury", treasuryUrl);
+      setHref("officialOpenSea", "https://opensea.io/ZOQstudio");
+      setHref("jawaCollection", "https://opensea.io/ZOQstudio?collectionSlugs=jawa-cosmic-legends");
+      setHref("zurp001Collection", "https://opensea.io/ZOQstudio?collectionSlugs=zurp-001");
+      setHref("zurp002Collection", "https://opensea.io/ZOQstudio?collectionSlugs=zurp-002");
+      setHref("zurp003Collection", "https://opensea.io/ZOQstudio?collectionSlugs=zurp-003-the-foes-of-prince-zoq");
+      setHref("javaneseCollection", "https://opensea.io/ZOQstudio?collectionSlugs=javanese-legends-collection");
+      setHref("putriCollection", "https://opensea.io/ZOQstudio?collectionSlugs=putri-bali");
+    }
+
+    setupLinks();
+    applyData(FALLBACK, "fallback");
+    loadOpenSeaThumbnails();
+    loadFromPolygonScanApi().catch(() => applyData(FALLBACK, "fallback"));
+  </script>
+</body>
+</html>
+
+
