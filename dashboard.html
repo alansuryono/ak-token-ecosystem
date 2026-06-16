@@ -1,89 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>AK Token Dashboard</title>
-<style>
-body{
-background:#0f172a;
-color:white;
-font-family:Arial;
-padding:20px;
-}
-.card{
-background:#1e293b;
-padding:20px;
-margin:15px 0;
-border-radius:12px;
-}
-h1{
-color:#22c55e;
-}
-a{
-color:#22c55e;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AK Token Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0f172a;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #22c55e;
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #ffffff;
+    }
+
+    .subtitle {
+      color: #cbd5e1;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 22px;
+      margin: 16px 0;
+      border-radius: 12px;
+      border: 1px solid rgba(34, 197, 94, 0.18);
+    }
+
+    a {
+      color: #22c55e;
+      font-weight: bold;
+      word-break: break-word;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .button {
+      display: inline-block;
+      background: #22c55e;
+      color: #06111f;
+      padding: 10px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .button.secondary {
+      background: #334155;
+      color: #ffffff;
+      border: 1px solid #475569;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .metric {
+      font-size: 28px;
+      color: #22c55e;
+      font-weight: bold;
+      margin: 6px 0;
+    }
+
+    .progress {
+      width: 100%;
+      height: 12px;
+      background: #334155;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-bar {
+      width: 8%;
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #38bdf8);
+    }
+
+    .address {
+      font-family: Consolas, monospace;
+      word-break: break-word;
+      color: #e2e8f0;
+    }
+
+    .note {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 14px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h1>AK Token Dashboard</h1>
+    <p class="subtitle">
+      Public project dashboard for AK Token ecosystem, community metrics, NFT collections, and Sui grant preparation.
+    </p>
 
-<h1>AK Token Dashboard</h1>
+    <div class="button-row">
+      <a class="button" href="https://aktoken.id">Main Website</a>
+      <a class="button secondary" href="https://aktoken.id/grant.html">View Sui Grant Proposal</a>
+      <a class="button secondary" href="https://aktoken.id/ak-token-whitepaper.pdf">Whitepaper</a>
+      <a class="button secondary" href="https://x.com/ZOQstudio" target="_blank">Official X</a>
+    </div>
 
-<div class="card">
-<h2>Project Status</h2>
-<p>Token Live on Polygon</p>
-<p>Website Active</p>
-<p>Liquidity Pool Active</p>
-<p>NFT Collections: 6</p>
-</div>
+    <div class="grid">
+      <div class="card">
+        <h2>Project Status</h2>
+        <p>Token Live on Polygon</p>
+        <p>Website Active</p>
+        <p>Liquidity Pool Active</p>
+        <p>NFT Collections: 6</p>
+        <p>Community Building: Active</p>
+      </div>
 
-<div class="card">
-<h2>Community Metrics</h2>
-<p>Current Holders: 8</p>
-<p>Target Holders: 100</p>
-<p>Community Building: Active</p>
-</div>
+      <div class="card">
+        <h2>Community Metrics</h2>
+        <p>Current Holders:</p>
+        <div class="metric">8</div>
+        <p>Target Holders: 100</p>
+        <p>Progress: 8%</p>
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+        <p class="note">92 holders remaining to reach the first community milestone.</p>
+      </div>
+    </div>
 
-<div class="card">
-<h2>Token Information</h2>
-<p>Name: AK Token</p>
-<p>Symbol: AK</p>
-<p>Total Supply: 1,000,001,000 AK</p>
-<p>Network: Polygon</p>
-</div>
+    <div class="grid">
+      <div class="card">
+        <h2>Token Information</h2>
+        <p>Name: AK Token</p>
+        <p>Symbol: AK</p>
+        <p>Total Supply: 1,000,001,000 AK</p>
+        <p>Network: Polygon</p>
+      </div>
 
-<div class="card">
-<h2>Important Links</h2>
+      <div class="card">
+        <h2>Sui Proposal Status</h2>
+        <p>Grant Preparation Active</p>
+        <p>Sui Education Plan Ready</p>
+        <p>Cultural NFT Concept Ready</p>
+        <p>Community Onboarding Target: 100 Members</p>
+      </div>
+    </div>
 
-<p><a href="https://aktoken.id">Main Website</a></p>
+    <div class="card">
+      <h2>AK Token Contract</h2>
+      <p class="address">0xF81e151Ef268301e4E69be34ed12Cb88308c06E9</p>
+      <p>
+        <a href="https://polygonscan.com/token/0xf81e151Ef268301e4E69be34ed12Cb88308c06E9" target="_blank">
+          View Contract on PolygonScan
+        </a>
+      </p>
+    </div>
 
-<p><a href="https://aktoken.id/whitepaper.pdf">Whitepaper</a></p>
+    <div class="card">
+      <h2>Treasury Wallet</h2>
+      <p class="address">0x4d38F67BC23C7D21D380F47e6c3fd7B738823Eb1</p>
+      <p>
+        <a href="https://polygonscan.com/address/0x4d38F67BC23C7D21D380F47e6c3fd7B738823Eb1" target="_blank">
+          View Treasury Wallet on PolygonScan
+        </a>
+      </p>
+    </div>
 
-<p><a href="https://aktoken.id/grant.html">Grant Proposal</a></p>
+    <div class="card">
+      <h2>Important Links</h2>
+      <p><a href="https://aktoken.id">Main Website</a></p>
+      <p><a href="https://aktoken.id/ak-token-whitepaper.pdf">Whitepaper</a></p>
+      <p><a href="https://aktoken.id/grant.html">Sui Grant Proposal</a></p>
+      <p><a href="https://opensea.io/ZOQstudio" target="_blank">OpenSea NFT Collections</a></p>
+      <p><a href="https://x.com/ZOQstudio" target="_blank">Official X</a></p>
+    </div>
 
-</div>
+    <div class="card">
+      <h2>External Resources</h2>
+      <p>NFT Collections Available</p>
+      <p>Polygon Contract Active</p>
+      <p>Public Dashboard Active</p>
+      <p>Sui Grant Proposal Direction Active</p>
+    </div>
 
-<div class="card">
-<h2>Project Wallet</h2>
-
-<p>
-0xF81e151EF268301e4E69be34ed12Cb88308c06E9
-</p>
-
-</div>
-<div class="card">
-<h2>External Resources</h2>
-
-<p>
-<a href="https://x.com/ZOQstudio">Official X</a>
-</p>
-
-<p>
-NFT Collections Available
-</p>
-
-<p>
-Polygon Contract Active
-</p>
-
-</div>
+    <div class="card">
+      <h2>Disclaimer</h2>
+      <p class="note">
+        AK Token is a community utility project. This dashboard is for public transparency and proposal preparation only.
+        It is not investment advice and does not guarantee profit, token price increase, grant approval, or liquidity.
+      </p>
+    </div>
+  </div>
 </body>
 </html>
