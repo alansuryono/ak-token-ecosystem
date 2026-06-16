@@ -1,66 +1,201 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Buy AK Token</title>
-<meta charset="UTF-8">
-<style>
-body{background:#0f172a;color:white;font-family:Arial;max-width:900px;margin:auto;padding:20px;}
-h1,h2{color:#22c55e;}
-.card{background:#1e293b;padding:20px;border-radius:14px;margin:18px 0;}
-a{color:#86efac;font-weight:bold;}
-.btn{display:inline-block;background:#22c55e;color:#0f172a;padding:14px 22px;border-radius:10px;text-decoration:none;margin:8px 10px 8px 0;}
-</style>
+  <title>Buy AK Token</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      max-width: 980px;
+      margin: auto;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    h1, h2 {
+      color: #22c55e;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #cbd5e1;
+      margin-bottom: 22px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 22px;
+      border-radius: 14px;
+      margin: 18px 0;
+      border: 1px solid rgba(34, 197, 94, 0.18);
+    }
+
+    a {
+      color: #86efac;
+      font-weight: bold;
+      word-break: break-word;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #22c55e;
+      color: #0f172a;
+      padding: 13px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn.secondary {
+      background: #334155;
+      color: white;
+      border: 1px solid #475569;
+    }
+
+    .address {
+      font-family: Consolas, monospace;
+      word-break: break-word;
+      color: #e2e8f0;
+    }
+
+    .warning {
+      border-left: 4px solid #facc15;
+    }
+
+    ol li, ul li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 14px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1>Buy AK Token</h1>
+  <h1>Buy AK Token</h1>
+  <p class="subtitle">
+    Access guide for AK Token on Polygon Network. This page is for transparency and community access only.
+  </p>
 
-<div class="card">
-<h2>What is AK Token?</h2>
-<p>AK Token is a community utility token built on Polygon Network. The ecosystem combines NFT, creator economy, digital products, community rewards and future loyalty programs.</p>
-</div>
+  <div class="btn-row">
+    <a class="btn" href="https://aktoken.id">Main Website</a>
+    <a class="btn secondary" href="https://aktoken.id/grant.html">Sui Grant Proposal</a>
+    <a class="btn secondary" href="https://aktoken.id/dashboard.html">Dashboard</a>
+    <a class="btn secondary" href="https://x.com/ZOQstudio" target="_blank">Official X</a>
+  </div>
 
-<div class="card">
-<h2>Token Information</h2>
-<p><b>Name:</b> AK Token</p>
-<p><b>Symbol:</b> AK</p>
-<p><b>Network:</b> Polygon</p>
-<p><b>Total Supply:</b> 1,000,001,000 AK</p>
-</div>
+  <div class="card">
+    <h2>What is AK Token?</h2>
+    <p>
+      AK Token is a community utility token built on Polygon Network. The ecosystem combines NFT collections,
+      creator economy, digital products, community rewards, real world utility experiments, and future loyalty concepts.
+    </p>
+  </div>
 
-<div class="card">
-<h2>Contract Address</h2>
-<p>0xF81e151EF268301e4E69be34ed12Cb88308c06E9</p>
-</div>
+  <div class="card">
+    <h2>Token Information</h2>
+    <p><b>Name:</b> AK Token</p>
+    <p><b>Symbol:</b> AK</p>
+    <p><b>Network:</b> Polygon</p>
+    <p><b>Total Supply:</b> 1,000,001,000 AK</p>
+  </div>
 
-<div class="card">
-<h2>How To Buy</h2>
-<ol>
-<li>Install MetaMask Wallet or Trust Wallet</li>
-<li>Switch to Polygon Network</li>
-<li>Deposit POL token</li>
-<li>Open Uniswap or QuickSwap</li>
-<li>Paste AK Token Contract Address</li>
-<li>Swap POL to AK</li>
-</ol>
-</div>
+  <div class="card">
+    <h2>AK Token Contract Address</h2>
+    <p class="address">0xF81e151Ef268301e4E69be34ed12Cb88308c06E9</p>
+    <p>
+      <a href="https://polygonscan.com/token/0xF81e151Ef268301e4E69be34ed12Cb88308c06E9" target="_blank">
+        View AK Token Contract on PolygonScan
+      </a>
+    </p>
+  </div>
 
-<div class="card">
-<h2>Buy Links</h2>
-<a class="btn" href="https://app.uniswap.org">Buy on Uniswap</a>
-<p>QuickSwap listing is under review. Please use Uniswap for the official AK Token purchase route.</p>
-</div>
+  <div class="card">
+    <h2>How To Buy / Swap AK Token</h2>
+    <ol>
+      <li>Install MetaMask Wallet or Trust Wallet.</li>
+      <li>Switch wallet network to Polygon.</li>
+      <li>Deposit POL token for swap and gas fee.</li>
+      <li>Open Uniswap on Polygon.</li>
+      <li>Paste the AK Token contract address.</li>
+      <li>Review token contract carefully before swapping.</li>
+      <li>Swap POL to AK only if you understand the risk.</li>
+    </ol>
+  </div>
 
-<div class="card">
-<h2>Official Links</h2>
-<p>Website: https://aktoken.id</p>
-<p>Whitepaper: https://aktoken.id/whitepaper.pdf</p>
-<p>Grant Proposal: https://aktoken.id/grant.html</p>
-</div>
-<hr>
+  <div class="card">
+    <h2>Buy / Swap Links</h2>
 
-<p>
-<a href="https://aktoken.id">🏠 Back to Main Website</a>
-</p>
+    <div class="btn-row">
+      <a class="btn" target="_blank"
+         href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0xF81e151Ef268301e4E69be34ed12Cb88308c06E9">
+        Swap on Uniswap
+      </a>
+
+      <a class="btn secondary" target="_blank"
+         href="https://polygonscan.com/token/0xF81e151Ef268301e4E69be34ed12Cb88308c06E9">
+        Verify Contract
+      </a>
+    </div>
+
+    <p>
+      QuickSwap listing may be added later if available. For now, users should always verify the AK Token contract
+      before making any swap.
+    </p>
+  </div>
+
+  <div class="card warning">
+    <h2>Important Risk Notice</h2>
+    <p>
+      AK Token is a community utility token. This page is not investment advice and does not guarantee profit,
+      token price increase, liquidity, exchange listing, or investment return.
+    </p>
+    <p>
+      Always verify the contract address before swapping. Crypto assets are risky and users are responsible for
+      their own wallet and transaction decisions.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Official Links</h2>
+    <p><a href="https://aktoken.id">Website: https://aktoken.id</a></p>
+    <p><a href="https://aktoken.id/ak-token-whitepaper.pdf">Whitepaper: https://aktoken.id/ak-token-whitepaper.pdf</a></p>
+    <p><a href="https://aktoken.id/grant.html">Grant Proposal: https://aktoken.id/grant.html</a></p>
+    <p><a href="https://aktoken.id/dashboard.html">Dashboard: https://aktoken.id/dashboard.html</a></p>
+    <p><a href="https://x.com/ZOQstudio" target="_blank">Official X: https://x.com/ZOQstudio</a></p>
+  </div>
+
+  <hr />
+
+  <p>
+    <a href="https://aktoken.id">Back to Main Website</a>
+  </p>
+
 </body>
 </html>
