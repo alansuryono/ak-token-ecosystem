@@ -1,0 +1,43 @@
+{
+  "supply": 1000001000,
+  "holders": 11,
+  "transfers": 34,
+  "confirmedDistribution": 450,
+  "confirmedRecipients": 5,
+  "targetHolders": 100,
+  "lastUpdated": "2026-06-18",
+  "source": "PolygonScan verified",
+  "swapActivity": "Early swap activity visible through Polygon swap routes",
+  "msmeDistribution": [
+    {
+      "name": "Ari Guntoro / KRIPIS",
+      "category": "Banana chips MSME - Blitar",
+      "wallet": "0xE17b686889A23831D8DB5aAfB988fB6644B686eE",
+      "amount": 100
+    },
+    {
+      "name": "Sidig",
+      "category": "Electric bicycle store and sparepart - Bali",
+      "wallet": "0x35979063246F95E22575b7a20fAE596a8277b30b",
+      "amount": 100
+    },
+    {
+      "name": "Enggal",
+      "category": "Frozen food reseller - Bali",
+      "wallet": "0x309503E91bAf33b962c211aeE42cB2A2b746D2C9",
+      "amount": 100
+    },
+    {
+      "name": "Zain Ranis",
+      "category": "Marketing supporter",
+      "wallet": "0x3518E47b552c9cFb8566eB214Cc98C5228413d50",
+      "amount": 50
+    },
+    {
+      "name": "Laminah",
+      "category": "Siomay shop MSME - Denpasar",
+      "wallet": "0xB2894CA6b6a1A108a407c3993a2A4Af8b1B130AB",
+      "amount": 100
+    }
+  ]
+}
