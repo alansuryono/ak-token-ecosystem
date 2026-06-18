@@ -1,201 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buy AK Token</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Access guide for AK Token on Polygon Network.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <style>
+    :root {
+      --bg: #07111f;
+      --panel: #101a31;
+      --panel2: #142845;
+      --text: #eef7ff;
+      --muted: #a8bdd4;
+      --green: #39ff88;
+      --cyan: #28d7ff;
+      --line: rgba(57, 255, 136, .22);
+      --warning: #ffc857;
+    }
+    * { box-sizing: border-box; }
     body {
-      background: #0f172a;
-      color: white;
-      font-family: Arial, sans-serif;
-      max-width: 980px;
-      margin: auto;
-      padding: 20px;
-      line-height: 1.5;
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(40, 215, 255, .12), transparent 34%),
+        radial-gradient(circle at 90% 18%, rgba(57, 255, 136, .10), transparent 32%),
+        linear-gradient(180deg, #060b18 0%, var(--bg) 55%, #030611 100%);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
     }
-
-    h1, h2 {
-      color: #22c55e;
-    }
-
+    a { color: inherit; }
+    .wrap { width: min(1080px, calc(100% - 28px)); margin: 0 auto; }
+    header { padding: 48px 0 22px; }
     h1 {
-      font-size: 42px;
-      margin-bottom: 8px;
+      margin: 0 0 12px;
+      color: var(--green);
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1;
+      letter-spacing: 0;
     }
-
-    .subtitle {
-      color: #cbd5e1;
-      margin-bottom: 22px;
-    }
-
-    .card {
-      background: #1e293b;
-      padding: 22px;
-      border-radius: 14px;
-      margin: 18px 0;
-      border: 1px solid rgba(34, 197, 94, 0.18);
-    }
-
-    a {
-      color: #86efac;
-      font-weight: bold;
-      word-break: break-word;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 16px 0;
-    }
-
+    h2 { margin: 0 0 14px; color: var(--green); font-size: clamp(24px, 3vw, 34px); }
+    h3 { margin: 0 0 10px; font-size: 20px; }
+    p { margin: 0 0 12px; }
+    .subtitle { color: var(--muted); font-size: 18px; max-width: 840px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
     .btn {
-      display: inline-block;
-      background: #22c55e;
-      color: #0f172a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
       padding: 13px 18px;
+      border: 1px solid rgba(255, 255, 255, .14);
       border-radius: 10px;
+      background: rgba(255, 255, 255, .08);
+      color: var(--text);
+      font-weight: 800;
       text-decoration: none;
-      font-weight: bold;
     }
-
-    .btn.secondary {
-      background: #334155;
-      color: white;
-      border: 1px solid #475569;
+    .btn.primary {
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      color: #06101e;
+      border-color: transparent;
     }
-
-    .address {
-      font-family: Consolas, monospace;
-      word-break: break-word;
-      color: #e2e8f0;
+    main { padding: 14px 0 36px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
     }
-
-    .warning {
-      border-left: 4px solid #facc15;
+    .card {
+      grid-column: span 12;
+      background: linear-gradient(180deg, rgba(20, 40, 69, .96), rgba(16, 26, 49, .96));
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, .24);
     }
-
-    ol li, ul li {
-      margin-bottom: 8px;
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-8 { grid-column: span 8; }
+    .label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
-
-    @media (max-width: 700px) {
-      body {
-        padding: 14px;
-      }
-
-      h1 {
-        font-size: 32px;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
+    .value {
+      color: var(--green);
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 900;
+      margin-top: 4px;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    td {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+    td:first-child { color: var(--muted); width: 34%; }
+    ol, ul { margin: 0; padding-left: 20px; color: var(--muted); }
+    li { margin: 8px 0; }
+    .note {
+      border-color: rgba(255, 200, 87, .38);
+      background: linear-gradient(180deg, rgba(255, 200, 87, .11), rgba(16, 26, 49, .96));
+    }
+    .small { color: var(--muted); font-size: 14px; }
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      padding: 24px 0 32px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 760px) {
+      .span-4, .span-6, .span-8 { grid-column: span 12; }
+      .btn { width: 100%; }
+      .card { padding: 18px; }
     }
   </style>
 </head>
 <body>
-
-  <h1>Buy AK Token</h1>
-  <p class="subtitle">
-    Access guide for AK Token on Polygon Network. This page is for transparency and community access only.
-  </p>
-
-  <div class="btn-row">
-    <a class="btn" href="https://aktoken.id">Main Website</a>
-    <a class="btn secondary" href="https://aktoken.id/grant.html">Sui Grant Proposal</a>
-    <a class="btn secondary" href="https://aktoken.id/dashboard.html">Dashboard</a>
-    <a class="btn secondary" href="https://x.com/ZOQstudio" target="_blank">Official X</a>
-  </div>
-
-  <div class="card">
-    <h2>What is AK Token?</h2>
-    <p>
-      AK Token is a community utility token built on Polygon Network. The ecosystem combines NFT collections,
-      creator economy, digital products, community rewards, real world utility experiments, and future loyalty concepts.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>Token Information</h2>
-    <p><b>Name:</b> AK Token</p>
-    <p><b>Symbol:</b> AK</p>
-    <p><b>Network:</b> Polygon</p>
-    <p><b>Total Supply:</b> 1,000,001,000 AK</p>
-  </div>
-
-  <div class="card">
-    <h2>AK Token Contract Address</h2>
-    <p class="address">0xF81e151Ef268301e4E69be34ed12Cb88308c06E9</p>
-    <p>
-      <a href="https://polygonscan.com/token/0xF81e151Ef268301e4E69be34ed12Cb88308c06E9" target="_blank">
-        View AK Token Contract on PolygonScan
-      </a>
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>How To Buy / Swap AK Token</h2>
-    <ol>
-      <li>Install MetaMask Wallet or Trust Wallet.</li>
-      <li>Switch wallet network to Polygon.</li>
-      <li>Deposit POL token for swap and gas fee.</li>
-      <li>Open Uniswap on Polygon.</li>
-      <li>Paste the AK Token contract address.</li>
-      <li>Review token contract carefully before swapping.</li>
-      <li>Swap POL to AK only if you understand the risk.</li>
-    </ol>
-  </div>
-
-  <div class="card">
-    <h2>Buy / Swap Links</h2>
-
-    <div class="btn-row">
-      <a class="btn" target="_blank"
-         href="https://app.uniswap.org/swap?chain=polygon&outputCurrency=0xF81e151Ef268301e4E69be34ed12Cb88308c06E9">
-        Swap on Uniswap
-      </a>
-
-      <a class="btn secondary" target="_blank"
-         href="https://polygonscan.com/token/0xF81e151Ef268301e4E69be34ed12Cb88308c06E9">
-        Verify Contract
-      </a>
+  <header class="wrap">
+    <h1>Buy AK Token</h1>
+    <p class="subtitle">Access guide for AK Token on Polygon Network. This page is for transparency, community access, and token contract verification.</p>
+    <div class="actions">
+      <a class="btn primary" href="index.html">Main Website</a>
+      <a class="btn" href="index.html#dashboard">Dashboard</a>
+      <a class="btn" id="viewContract" target="_blank" rel="noreferrer">View Contract</a>
+      <a class="btn" href="https://x.com/ZOQstudio" target="_blank" rel="noreferrer">Official X</a>
     </div>
+  </header>
 
-    <p>
-      QuickSwap listing may be added later if available. For now, users should always verify the AK Token contract
-      before making any swap.
-    </p>
-  </div>
+  <main class="wrap">
+    <section class="grid">
+      <article class="card span-8">
+        <h2>What is AK Token?</h2>
+        <p>AK Token is a community utility token built on Polygon Network. The ecosystem connects NFT collections, digital products, MSME loyalty experiments, community rewards, and public transparency.</p>
+        <p class="small">AK Token is not financial advice and does not promise profit, price increase, income, or investment return.</p>
+      </article>
 
-  <div class="card warning">
-    <h2>Important Risk Notice</h2>
-    <p>
-      AK Token is a community utility token. This page is not investment advice and does not guarantee profit,
-      token price increase, liquidity, exchange listing, or investment return.
-    </p>
-    <p>
-      Always verify the contract address before swapping. Crypto assets are risky and users are responsible for
-      their own wallet and transaction decisions.
-    </p>
-  </div>
+      <article class="card span-4">
+        <h2>Current Data</h2>
+        <div class="label">Holders</div>
+        <div class="value" id="holders">11</div>
+        <div class="label" style="margin-top:12px;">Transfers</div>
+        <div class="value" id="transfers">34</div>
+      </article>
 
-  <div class="card">
-    <h2>Official Links</h2>
-    <p><a href="https://aktoken.id">Website: https://aktoken.id</a></p>
-    <p><a href="https://aktoken.id/ak-token-whitepaper.pdf">Whitepaper: https://aktoken.id/ak-token-whitepaper.pdf</a></p>
-    <p><a href="https://aktoken.id/grant.html">Grant Proposal: https://aktoken.id/grant.html</a></p>
-    <p><a href="https://aktoken.id/dashboard.html">Dashboard: https://aktoken.id/dashboard.html</a></p>
-    <p><a href="https://x.com/ZOQstudio" target="_blank">Official X: https://x.com/ZOQstudio</a></p>
-  </div>
+      <article class="card span-6">
+        <h2>Token Information</h2>
+        <table>
+          <tbody>
+            <tr><td>Name</td><td>AK Token</td></tr>
+            <tr><td>Symbol</td><td>AK</td></tr>
+            <tr><td>Network</td><td>Polygon</td></tr>
+            <tr><td>Total Supply</td><td id="supply">1,000,001,000 AK</td></tr>
+            <tr><td>Contract</td><td><a id="contractText" target="_blank" rel="noreferrer">0xf81e151ef268301e4e69be34ed12cb88308c06e9</a></td></tr>
+          </tbody>
+        </table>
+      </article>
 
-  <hr />
+      <article class="card span-6">
+        <h2>How to Access / Swap</h2>
+        <ol>
+          <li>Use a wallet that supports Polygon Network, such as MetaMask or Trust Wallet.</li>
+          <li>Switch wallet network to Polygon.</li>
+          <li>Prepare POL for gas fees and swap route.</li>
+          <li>Open a Polygon-supported swap interface such as Uniswap.</li>
+          <li>Paste the official AK Token contract address.</li>
+          <li>Review route, slippage, and received amount before confirming.</li>
+        </ol>
+      </article>
 
-  <p>
-    <a href="https://aktoken.id">Back to Main Website</a>
-  </p>
+      <article class="card span-12">
+        <h2>Buy / Swap Links</h2>
+        <div class="actions">
+          <a class="btn primary" id="uniswapLink" target="_blank" rel="noreferrer">Open Uniswap</a>
+          <a class="btn" id="holdersLink" target="_blank" rel="noreferrer">View Holders</a>
+          <a class="btn" id="transfersLink" target="_blank" rel="noreferrer">View Transfers</a>
+        </div>
+        <p class="small" style="margin-top:14px;">Always verify the contract address before swapping. Some wallets may show a warning when price data is not available.</p>
+      </article>
 
+      <article class="card note span-12">
+        <h2>Important Notice</h2>
+        <p>AK Token is a community utility and loyalty experiment. This page does not recommend buying, selling, or investing. Swap availability, routing, liquidity, token price, and received amount may change at any time.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 AK Token Ecosystem. Community Utility Project. Powered by Polygon Network. Not investment advice.</div>
+  </footer>
+
+  <script>
+    const CONTRACT = "0xf81e151ef268301e4e69be34ed12cb88308c06e9";
+    const POLYGONSCAN = "https://polygonscan.com";
+    const UNISWAP = `https://app.uniswap.org/swap?chain=polygon&outputCurrency=${CONTRACT}`;
+
+    function fmt(value) {
+      return Number(value || 0).toLocaleString("en-US");
+    }
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+    function setHref(id, url) {
+      const el = document.getElementById(id);
+      if (el) el.href = url;
+    }
+
+    async function loadData() {
+      try {
+        const response = await fetch("data.json", { cache: "no-store" });
+        if (!response.ok) throw new Error("data unavailable");
+        const data = await response.json();
+        setText("holders", fmt(data.holders || 11));
+        setText("transfers", fmt(data.transfers || 34));
+        setText("supply", `${fmt(data.supply || 1000001000)} AK`);
+      } catch (error) {
+        setText("holders", "11");
+        setText("transfers", "34");
+      }
+    }
+
+    const contractUrl = `${POLYGONSCAN}/token/${CONTRACT}`;
+    setHref("viewContract", contractUrl);
+    setHref("contractText", contractUrl);
+    setHref("holdersLink", `${POLYGONSCAN}/token/tokenholderchart/${CONTRACT}`);
+    setHref("transfersLink", `${POLYGONSCAN}/token/${CONTRACT}#tokentxns`);
+    setHref("uniswapLink", UNISWAP);
+    loadData();
+  </script>
 </body>
 </html>
