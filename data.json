@@ -1,11 +1,11 @@
 {
   "supply": 1000001000,
   "holders": 11,
-  "transfers": 34,
+  "transfers": 38,
   "confirmedDistribution": 450,
   "confirmedRecipients": 5,
   "targetHolders": 100,
-  "lastUpdated": "2026-06-18",
+ "lastUpdated": "2026-06-18",
   "source": "PolygonScan verified",
   "swapActivity": "Early swap activity visible through Polygon swap routes",
   "msmeDistribution": [
