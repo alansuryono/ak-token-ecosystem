@@ -5,7 +5,7 @@
   "confirmedDistribution": 500,
   "confirmedRecipients": 5,
   "targetHolders": 100,
- "lastUpdated": "2026-06-18",
+  "lastUpdated": "2026-06-18",
   "source": "PolygonScan verified",
   "swapActivity": "Early swap activity visible through Polygon swap routes",
   "msmeDistribution": [
