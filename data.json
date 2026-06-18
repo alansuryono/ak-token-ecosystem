@@ -2,7 +2,7 @@
   "supply": 1000001000,
   "holders": 11,
   "transfers": 38,
-  "confirmedDistribution": 450,
+  "confirmedDistribution": 500,
   "confirmedRecipients": 5,
   "targetHolders": 100,
  "lastUpdated": "2026-06-18",
@@ -31,7 +31,7 @@
       "name": "Zain Ranis",
       "category": "Marketing supporter",
       "wallet": "0x3518E47b552c9cFb8566eB214Cc98C5228413d50",
-      "amount": 50
+      "amount": 100
     },
     {
       "name": "Laminah",
